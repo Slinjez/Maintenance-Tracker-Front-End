@@ -1,0 +1,15 @@
+language: python
+python:
+  
+  - "3.6.1"
+
+install: pip install -r requirements.txt
+services: 
+  - postgresql
+before_script: 
+  - psql -c 'create database maintenancetracker;' -U postgres 
+  - python config.py
+
+script: nosetests --with-coverage --cover-package=tests
+
+after_success: coveralls
