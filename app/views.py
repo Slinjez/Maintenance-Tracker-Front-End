@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, make_response
+from flask import Flask, jsonify, request, make_response,render_template
 import types
 import time
 import datetime
@@ -50,7 +50,7 @@ def tokenRequired(f):
 
 @app.route('/')
 def index():
-    return "will be back with the ui soon"
+    return render_template('index.html')
 
 
 @app.route('/api/v2/auth/signup', methods=['POST'])
